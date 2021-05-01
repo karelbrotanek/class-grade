@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="../../AppData/Roaming/JetBrains/IntelliJIdea2020.3/extensions/com.intellij.java/styles.css">
+</head>
+<body>
+<h1 style="font-family: Bahnschrift">Am I failing my class ?</h1>
+<script>
+    let num = 0;
+    //let f = function () {
+    let button = document.createElement('button');
+    button.innerHTML = '<span style="font-family: Bahnschrift">přidat známku</span>';
+    button.style.background = "lightgreen";
+    button.onclick = function () {
+        num++;
+        let g = document.createElement('div');
+        g.innerHTML = 'grade #' + num.toString();
+        document.body.appendChild(g);
+        let grade = document.createElement('input');
+        document.body.appendChild(grade);// pote co klikneme na tlacitko vytvori novy text field
+        let w = document.createElement('input');
+        document.body.appendChild(w);// pote co klikneme na tlacitko vytvori novy text field
+    }
+    document.body.appendChild(button);
+    let button1 = document.createElement('button');
+    button1 .innerHTML = '<span style="font-family: Bahnschrift;">spočítat průměr</span>';
+    button1.style.background = "aquamarine";
+    document.body.appendChild(button1);
+    button1.onclick = function (){
+        let sum = 0;
+        let w = 0;
+        let grades = document.getElementsByTagName('input');// vytvori pole vsech inputu
+        for (let i = 0; i < grades.length; i += 2) {
+            sum = sum + parseInt(grades[i].value) * parseInt(grades[i + 1].value);
+            w = w + parseInt(grades[i + 1].value);
+        }
+        let finalGrade = Math.round(100 * sum/w)/100;
+        let fg = document.createElement('div');
+        fg.innerHTML = "<span style='font-family: Bahnschrift'>mean: </span><span style='color: red; font-weight: bold; font-family: Bahnschrift;'>" + finalGrade.toString() + "% </span>";
+        document.body.appendChild(fg);
+        let failing = "yes";
+        if (finalGrade >= 40){
+            failing = 'no';
+        }
+        let f = document.createElement("div");
+        f.innerHTML = "<span style='font-family: Bahnschrift'>Am I failing my class?</span> <span style='color: red; font-weight: bold; font-family: Bahnschrift; '>" + failing + "</span>";
+        document.body.appendChild(f);
+    }
+    //};
+</script>
+</body>
+</html>
